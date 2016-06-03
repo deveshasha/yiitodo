@@ -1,37 +1,49 @@
 <?php
+
 namespace app\models;
-use yii\base\Model;
 
+use Yii;
 
-class Status extends Model
+/**
+ * This is the model class for table "status".
+ *
+ * @property integer $id
+ * @property string $title
+ * @property string $description
+ * @property integer $completion
+ */
+class Status extends \yii\db\ActiveRecord
 {
-	const COMPLETION_YES = 'Done';
-	const COMPLETION_NO = 'Undone';
-	public $text;
-	public $completion;
-	public function rules()
-	{
-		return [
-			[['text','completion'],'required'],
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'status';
+    }
 
-	public function getCompletions()
-	{
-		return array(self::COMPLETION_YES=>'Done',self::COMPLETION_NO=>'Undone');
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['title', 'description'], 'required'],
+            [['title', 'description'], 'string'],
+            [['completion'], 'integer'],
+        ];
+    }
 
-	public function getCompletionsLabel($completion)
-	{
-		if($completion == self::COMPLETION_YES)
-		{
-			return 'Done';
-		}
-		else
-		{
-			return 'Undone';
-		}
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'completion' => 'Completion',
+        ];
+    }
 }
-
-?>
