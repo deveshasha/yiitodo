@@ -16,7 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'completion')->textInput() ?>
+    <!-- <?= $form->field($model, 'completion')->textInput() ?>-->
+
+    <?= $form->field($model, 'completion')->dropDownList($model->getCompletions(),['prompt'=>'-Select completion-']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
