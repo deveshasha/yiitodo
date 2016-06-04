@@ -6,8 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Status */
 
-$this->title = 'Create Status';
-$this->params['breadcrumbs'][] = ['label' => 'Statuses', 'url' => ['index']];
+//$this->title = 'Create Status';
+$this->title = 'Create Task';
+$this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-create">
