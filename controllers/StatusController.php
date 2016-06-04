@@ -74,7 +74,7 @@ class StatusController extends Controller
         } 
         else
         {
-            return $this->render('create', ['model' => $model,]);
+            return $this->renderAjax('create', ['model' => $model,]);
         }
     }
 

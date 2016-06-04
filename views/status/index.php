@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\StatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,11 +15,24 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="status-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::button('Create Task', ['value'=>Url::to(['status/create']),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </p>
+
+    <?php
+        Modal::begin([
+
+            'header'=>'<h4>Tasks</h4>',
+            'id'=>'modal',
+            'size'=>'modal-lg',
+            ]);
+        echo "<div id='modalContent'></div>";
+
+        Modal::end();
+    ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

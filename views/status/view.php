@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $done = $model->completion;
 $color = gcolor($done);
-$this->params['breadcrumbs'][] = ['label' => 'Statuses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 function gcolor($done)
