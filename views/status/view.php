@@ -7,13 +7,23 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Status */
 
 $this->title = $model->title;
+$done = $model->completion;
+$color = gcolor($done);
 $this->params['breadcrumbs'][] = ['label' => 'Statuses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+function gcolor($done)
+{
+	if($done==1)
+		return "green";
+	else
+		return "red";
+}
+
 ?>
 <div class="status-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    	<h1 style="color: <?=$color?> "><?= Html::encode($this->title) ?></h1>	
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
