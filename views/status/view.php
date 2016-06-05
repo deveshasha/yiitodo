@@ -24,7 +24,7 @@ function gcolor($done)
 <div class="status-view">
 
     	<h1 style="color: <?=$color?> "><?= Html::encode($this->title) ?></h1>	
-    	<br><br>
+    	<br>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [

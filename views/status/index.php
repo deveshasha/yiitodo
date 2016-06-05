@@ -25,12 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             if($model->completion == 0)
             {
-                return ['class'=>'danger','style'=>'color:#e60000'];
+                return ['class'=>'danger','style'=>'color:#e60000;cursor:pointer;cursor:hand;','id'=> $model['id'],'onclick'=>'location.href="'.Yii::$app->urlManager->createUrl('status/view').'?id="+(this.id);',
+            ];
             }
             else 
             {
-                return ['class'=>'success','style'=>'color:#00cc00'];
-            }
+                return ['class'=>'success','style'=>'color:#00cc00;cursor:pointer;cursor:hand;','id'=> $model['id'], 'onclick' => 'location.href="'.Yii::$app->urlManager->createUrl('status/view').'?id="+(this.id);',
+            ];
+            }        
 
         },
         'columns' => [
@@ -50,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['style'=>'width:75px;']
             ],
         ],
+
     ]); ?>
 
     <p>
