@@ -17,6 +17,41 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'rowOptions' => function($model){
+
+            if($model->completion == 0)
+            {
+                return ['class'=>'danger','style'=>'color:#e60000'];
+            }
+            else 
+            {
+                return ['class'=>'success','style'=>'color:#00cc00'];
+            }
+
+        },
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            //'id',
+            'title:ntext',
+            'description:ntext',
+            [
+                'attribute'=>'completion',
+                'value'=>'completion',
+                'contentOptions'=>['style'=>'width:50px;text-align:center;']
+            ],
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions'=>['style'=>'width:75px;']
+            ],
+        ],
+    ]); ?>
+
     <p>
         <?= Html::button('Create Task', ['value'=>Url::to(['status/create']),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </p>
@@ -32,31 +67,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
         Modal::end();
     ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'rowOptions' => function($model){
-
-            if($model->completion == 0)
-            {
-                return ['class'=>'danger'];
-            }
-            else 
-            {
-                return ['class'=>'success'];
-            }
-
-        },
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title:ntext',
-            'description:ntext',
-            'completion',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 </div>
