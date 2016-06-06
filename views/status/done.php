@@ -11,6 +11,10 @@ use yii\helpers\Url;
 //$this->title = 'Statuses';
 $this->title = 'Your Tasks';
 $this->params['breadcrumbs'][] = $this->title;
+
+$model->completion=1;
+$model->save();
+
 ?>
 <div class="status-index">
 

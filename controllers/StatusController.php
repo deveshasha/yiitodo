@@ -110,6 +110,15 @@ class StatusController extends Controller
         }
     }
 
+    public function actionDone($id)
+    {
+        $model = $this->findModel($id);
+        $searchModel = new StatusSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('done',['model'=>$model,'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,]);
+    }
+
     /**
      * Deletes an existing Status model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
